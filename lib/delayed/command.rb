@@ -71,6 +71,9 @@ module Delayed
         opt.on('--queue=queue', 'Specify which queue DJ must look up for jobs') do |queue|
           @options[:queues] = queue.split(',')
         end
+        opt.on('--except-queues=queues', 'Specify queues to ignore for this worker or a worker pool') do |queues|
+          @options[:except_queues] = queues.split(',')
+        end
         opt.on('--pool=queue1[,queue2][:worker_count]', 'Specify queues and number of workers for a worker pool') do |pool|
           parse_worker_pool(pool)
         end
